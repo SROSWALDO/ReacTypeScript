@@ -3,13 +3,9 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import List from "./components/List";
 import Form from "./components/Form";
+import { Sub } from "./types";
 
-interface Sub {
-  nick: string
-  subMonths: number
-  avatar: string
-  description?: string  //? que es opcional
-}
+
 
 interface AppState {
   subs: Array<Sub>
@@ -46,7 +42,7 @@ function App() {
   return (
    <div>
     <List subs={subs} />
-    <Form />
+    <Form onNewSub={setSubs} />
    </div> 
   );
 }
