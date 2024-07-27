@@ -11,38 +11,22 @@ interface AppState {
   subs: Array<Sub>
 }
 
-const INITIAL_STATE = [
-  {
-    nick: "dapelu",
-    subMonths: 3,
-    avatar: "https://i.pravatar.cc?/150?u=dapelu",
-    description: "Dapelu hace de moderador aveces",
-  },
-  {
-    nick: "Midu",
-    subMonths: 100,
-    avatar: "https://i.pravatar.cc?/150?u=midu",
-    description: "Midu come panacotas",
-  },
-  {
-    nick: "dapelu",
-    subMonths: 3,
-    avatar: "https://i.pravatar.cc?/150?u=dapelu",
-  },
-]
+
 
 function App() {
   const [subs, setSubs] = useState<AppState["subs"]>([]);
 
-  useEffect(() => {
-    setSubs(INITIAL_STATE)
+  const handleNewSub = (newSub: Sub): void => {
+    setSubs(subs => [...subs, newSub ])
+  }
 
+  useEffect(() => {
   },[])
 
   return (
    <div>
     <List subs={subs} />
-    <Form onNewSub={setSubs} />
+    <Form onNewSub={handleNewSub} />
    </div> 
   );
 }
